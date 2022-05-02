@@ -4,10 +4,15 @@
 
 En esta rama publico los scripts del curso a mi gusto.
 
-Versiones utilizadas:
+Librerías utilizadas con `python 3.8.12`:
 
 * `python 3.8.12`
 * `numpy 1.21.5`
 * `matplotlib 3.5.1`
 * `pandas 1.4.2`
 * `scikit-learn 1.0.2`
+
+Librerías utilizadas con `R 3.6.3`:
+
+* `caTools 1.18.2`
+* `ggplot2 3.3.5`
