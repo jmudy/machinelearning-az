@@ -4,7 +4,7 @@
 setwd("~/repos/machinelearning-az/datasets/Part 1 - Data Preprocessing")
 
 # Importar el dataset
-dataset = read.csv('Data.csv')
+dataset = read.csv('data/Data.csv')
 #dataset = dataset[, 2:3]
 
 # Dividir los datos en conjunto de entrenamiento y conjunto de test

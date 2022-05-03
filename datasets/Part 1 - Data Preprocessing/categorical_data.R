@@ -4,7 +4,7 @@
 setwd("~/repos/machinelearning-az/datasets/Part 1 - Data Preprocessing")
 
 # Importar el dataset
-dataset = read.csv('Data.csv')
+dataset = read.csv('data/Data.csv')
 
 
 # Codificar las variables categoricas

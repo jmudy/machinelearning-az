@@ -4,7 +4,7 @@
 setwd("~/repos/machinelearning-az/datasets/Part 2 - Regression")
 
 # Importar el dataset
-dataset = read.csv('Salary_Data.csv')
+dataset = read.csv('data/Salary_Data.csv')
 #dataset = dataset[, 2:3]
 
 # Dividir los datos en conjunto de entrenamiento y conjunto de test
@@ -54,10 +54,3 @@ ggplot() +
   ggtitle('Sueldo vs Años de Experiencia (Conjunto de Testing)') +
   xlab('Años de Experiencia') +
   ylab('Suelo (en $)')
-
-
-
-
-
-
-
