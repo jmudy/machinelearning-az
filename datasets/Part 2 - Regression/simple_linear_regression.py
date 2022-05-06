@@ -19,11 +19,9 @@ y = dataset.iloc[:, 1].values
 
 
 # Dividir el dataset en conjunto de entrenamiento y conjunto de testing
-from sklearn.model_selection import train_test_split
-
-# 80% conjunto entrenamiento y 20% conjunto de testing
 # En este caso se ha cogido como conjunto de test 1/3 lo cual no es lo habitual
 # y recomendable pero para este caso tan simple funciona correctamente
+from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1/3, random_state=0)
 
 

@@ -17,11 +17,9 @@ testing_set = subset(dataset, split == FALSE)
 
 
 # Escalado de valores
-# Hay que indicar las columnas donde hacer el escalado
-# No se hacen sobre los valores dummy de las columnas Country y Purchased porque
-# no puede operar con factores que convirtio previamente a tipo string
 #training_set[, 2:3] = scale(training_set[, 2:3])
 #testing_set[, 2:3] = scale(testing_set[, 2:3])
+
 
 # Ajustar el modelo de regresion lineal simple con el conjunto de entrenamiento
 regressor = lm(formula = Salary ~ YearsExperience,
