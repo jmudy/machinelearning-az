@@ -17,3 +17,4 @@ Librerías utilizadas con `R 3.6.3`:
 
 * `caTools 1.18.2`
 * `ggplot2 3.3.5`
+* `e1071`
