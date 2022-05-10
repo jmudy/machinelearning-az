@@ -56,7 +56,7 @@ plt.xlabel('Posicion del empleado')
 plt.ylabel('Sueldo (en $)')
 plt.show()
 
-# Ejercicio propuesto
+# Ejercicio propuesto reescalado de los ejes
 X_grid = np.arange(min(X), max(X), 0.1)
 X_grid = X_grid.reshape(len(X_grid), 1)
 plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
@@ -65,6 +65,3 @@ plt.title('Modelo de Regresion (SVR)')
 plt.xlabel('Posicion del empleado')
 plt.ylabel('Sueldo (en $)')
 plt.show()
-
-
-

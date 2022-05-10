@@ -62,9 +62,3 @@ plt.title('Sueldo vs Años de Experiencia (Conjunto de Testing)')
 plt.xlabel('Años de experiencia')
 plt.ylabel('Sueldo (en $)')
 plt.show()
-
-
-
-
-
-

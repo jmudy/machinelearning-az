@@ -78,4 +78,3 @@ lin_reg.predict([[6.5]])
 
 # Con el modelo polinomico si que se ajusta mas a los datos
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))
-

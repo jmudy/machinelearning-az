@@ -54,5 +54,3 @@ plt.title('Modelo de Regresion')
 plt.xlabel('Posicion del empleado')
 plt.ylabel('Sueldo (en $)')
 plt.show()
-
-

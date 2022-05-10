@@ -42,6 +42,3 @@ ggplot() +
   ggtitle('Prediccion (Modelo de Regresion)') +
   xlab('Nivel del empleado') +
   ylab('Sueldo (en $)')
-
-
-
