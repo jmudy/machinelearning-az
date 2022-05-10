@@ -19,3 +19,4 @@ Librerías utilizadas con `R 3.6.3`:
 * `ggplot2 3.3.5`
 * `e1071 1.7-6`
 * `rpart 4.1-15`
+* `randomForest 4.6-14`
