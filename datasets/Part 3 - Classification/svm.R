@@ -1,5 +1,5 @@
 
-# Plantilla de Clasificacion
+# SVM
 
 setwd("~/repos/machinelearning-az/datasets/Part 3 - Classification")
 
@@ -20,8 +20,12 @@ testing_set = subset(dataset, split == FALSE)
 training_set[, 1:2] = scale(training_set[, 1:2])
 testing_set[, 1:2] = scale(testing_set[, 1:2])
 
-# Ajustar el clasificador con el conjunto de entrenamiento
-# Crear el modelo de clasificacion
+# Ajustar el SVM con el conjunto de entrenamiento
+library(e1071) # Instalar con install.packages('e1071')
+classifier = svm(formula = Purchased ~ .,
+                 data = training_set,
+                 type = 'C-classification',
+                 kernel = 'linear')
 
 
 # Prediccion de los resultados con el conjunto de Testing

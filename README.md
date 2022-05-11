@@ -21,3 +21,4 @@ Librerías utilizadas con `R 3.6.3`:
 * `rpart 4.1-15`
 * `randomForest 4.6-14`
 * `ElemStatLearn 2015.6.26.2`
+* `class 7.3-19`

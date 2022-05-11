@@ -1,5 +1,5 @@
 
-# Plantilla de Clasificacion
+# K-Nearest Neighbors (K-NN)
 
 setwd("~/repos/machinelearning-az/datasets/Part 3 - Classification")
 
@@ -20,12 +20,14 @@ testing_set = subset(dataset, split == FALSE)
 training_set[, 1:2] = scale(training_set[, 1:2])
 testing_set[, 1:2] = scale(testing_set[, 1:2])
 
-# Ajustar el clasificador con el conjunto de entrenamiento
-# Crear el modelo de clasificacion
+# Ajustar el K-NN con el conjunto de entrenamiento
+# y hacer las predicciones con el conjunto de testing
+library(class) # Instalar con install.packages('class')
+y_pred = knn(train = training_set[, -3],
+             test = testing_set[, -3],
+             cl = training_set[, 3],
+             k = 5) 
 
-
-# Prediccion de los resultados con el conjunto de Testing
-y_pred = predict(classifier, newdata = testing_set[, -3]) # Todo el dataset excluyendo la columna 3
 
 # Crear la matriz de confusion
 cm = table(testing_set[, 3], y_pred)
@@ -40,9 +42,12 @@ X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
 X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
-y_grid = predict(classifier, newdata = grid_set)
+y_grid = knn(train = training_set[, -3],
+             test = grid_set,
+             cl = training_set[, 3],
+             k = 5)
 plot(set[, -3],
-     main = 'SVM (Conjunto de Entrenamiento)',
+     main = 'K-NN (Conjunto de Entrenamiento)',
      xlab = 'Edad', ylab = 'Sueldo Estimado',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
@@ -55,9 +60,12 @@ X1 = seq(min(set[, 1]) - 1, max(set[, 1]) + 1, by = 0.01)
 X2 = seq(min(set[, 2]) - 1, max(set[, 2]) + 1, by = 0.01)
 grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
-y_grid = predict(classifier, newdata = grid_set)
+y_grid = knn(train = training_set[, -3],
+             test = grid_set,
+             cl = training_set[, 3],
+             k = 5)
 plot(set[, -3],
-     main = 'SVM (Conjunto de Testing)',
+     main = 'K-NN (Conjunto de Testing)',
      xlab = 'Edad', ylab = 'Sueldo Estimado',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
