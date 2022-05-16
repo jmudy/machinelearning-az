@@ -1,5 +1,5 @@
 
-# Plantilla de Clasificacion
+# Random Forest
 
 setwd("~/repos/machinelearning-az/datasets/Part 3 - Classification")
 
@@ -23,8 +23,11 @@ testing_set = subset(dataset, split == FALSE)
 training_set[, 1:2] = scale(training_set[, 1:2])
 testing_set[, 1:2] = scale(testing_set[, 1:2])
 
-# Ajustar el clasificador con el conjunto de entrenamiento
-# Crear el modelo de clasificacion
+# Ajustar el clasificador de Random Forest con el conjunto de entrenamiento
+library(randomForest) # Instalar con install.packages('randomForest')
+classifier = randomForest(x = training_set[, -3],
+                          y = training_set[, 3],
+                          ntree = 10)
 
 
 # Prediccion de los resultados con el conjunto de Testing
@@ -45,7 +48,7 @@ grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 y_grid = predict(classifier, newdata = grid_set)
 plot(set[, -3],
-     main = 'Clasificacion (Conjunto de Entrenamiento)',
+     main = 'Random Forest (Conjunto de Entrenamiento)',
      xlab = 'Edad', ylab = 'Sueldo Estimado',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
@@ -60,7 +63,7 @@ grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 y_grid = predict(classifier, newdata = grid_set)
 plot(set[, -3],
-     main = 'Clasificacion (Conjunto de Testing)',
+     main = 'Random Forest (Conjunto de Testing)',
      xlab = 'Edad', ylab = 'Sueldo Estimado',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
