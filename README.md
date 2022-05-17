@@ -11,6 +11,7 @@ Librerías utilizadas con `python 3.8.12`:
 * `matplotlib 3.5.1`
 * `pandas 1.4.2`
 * `scikit-learn 1.0.2`
+* `scipy 1.7.3`
 * `statsmodels 0.9.0`
 
 Librerías utilizadas con `R 3.6.3`:

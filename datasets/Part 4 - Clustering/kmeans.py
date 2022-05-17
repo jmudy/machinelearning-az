@@ -7,7 +7,7 @@ Created on Mon May 16 19:46:25 2022
 
 # K-Means
 
-# Importar las librerías
+# Importar las librerias
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -25,7 +25,7 @@ for i in range(1, 11):
     wcss.append(kmeans.inertia_)
 plt.plot(range(1, 11), wcss)
 plt.title('Metodo del codo')
-plt.xlabel('umero de Clusters')
+plt.xlabel('Numero de Clusters')
 plt.ylabel('WCSS(k)')
 plt.show()
 
