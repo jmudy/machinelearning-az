@@ -14,12 +14,12 @@ Librerías utilizadas con `python 3.8.12`:
 * `scipy 1.7.3`
 * `statsmodels 0.9.0`
 
-Librerías utilizadas con `R 3.6.3`:
+Librerías utilizadas con `R 4.2.0`:
 
 * `caTools 1.18.2`
-* `ggplot2 3.3.5`
-* `e1071 1.7-6`
-* `rpart 4.1-15`
-* `randomForest 4.6-14`
+* `ggplot2 3.3.6`
+* `e1071 1.7-9`
+* `rpart 4.1-16`
+* `randomForest 4.7-1`
 * `ElemStatLearn 2015.6.26.2`
-* `class 7.3-19`
+* `class 7.3-20`
