@@ -23,3 +23,5 @@ Librerías utilizadas con `R 4.2.0`:
 * `randomForest 4.7-1`
 * `ElemStatLearn 2015.6.26.2`
 * `class 7.3-20`
+* `arules 1.7-3`
+* `arulesViz 1.5-1`
