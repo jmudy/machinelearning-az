@@ -8,6 +8,7 @@ Librerías utilizadas con `python 3.8.12`:
 * `scikit-learn 1.0.2`
 * `scipy 1.7.3`
 * `statsmodels 0.9.0`
+* `nltk 3.7`
 
 Librerías utilizadas con `R 4.2.0`:
 
