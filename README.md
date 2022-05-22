@@ -21,3 +21,5 @@ Librerías utilizadas con `R 4.2.0`:
 * `class 7.3-20`
 * `arules 1.7-3`
 * `arulesViz 1.5-1`
+* `tm 0.7-8`
+* `SnowballC 0.7.0`
