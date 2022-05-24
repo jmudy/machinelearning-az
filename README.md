@@ -9,6 +9,9 @@ Librerías utilizadas con `python 3.8.12`:
 * `scipy 1.7.3`
 * `statsmodels 0.9.0`
 * `nltk 3.7`
+* `tensorflow 2.9.1`
+* `keras 2.9.0 `
+* `theano 1.0.5`
 
 Librerías utilizadas con `R 4.2.0`:
 

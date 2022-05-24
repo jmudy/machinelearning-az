@@ -6,7 +6,6 @@ setwd("~/repos/machinelearning-az/datasets/Part 1 - Data Preprocessing")
 # Importar el dataset
 dataset = read.csv('data/Data.csv')
 
-
 # Codificar las variables categoricas
 dataset$Country = factor(dataset$Country,
                          levels = c('France', 'Spain', 'Germany'),

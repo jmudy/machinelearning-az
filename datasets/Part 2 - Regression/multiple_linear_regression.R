@@ -19,11 +19,9 @@ split = sample.split(dataset$Profit, SplitRatio = 0.8)
 training_set = subset(dataset, split == TRUE)
 testing_set = subset(dataset, split == FALSE)
 
-
 # Escalado de valores
 #training_set[, 2:3] = scale(training_set[, 2:3])
 #testing_set[, 2:3] = scale(testing_set[, 2:3])
-
 
 # Ajustar el modelo de Regresion Lineal Multiple con el Conjunto de Entrenamiento
 regression = lm(formula = Profit ~ ., # El punto indica que el resto de variables son las independientes

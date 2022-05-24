@@ -17,7 +17,6 @@ split = sample.split(dataset$Purchased, SplitRatio = 0.75)
 training_set = subset(dataset, split == TRUE)
 testing_set = subset(dataset, split == FALSE)
 
-
 # Escalado de valores
 # Hay que indicar las columnas donde hacer el escalado
 training_set[, 1:2] = scale(training_set[, 1:2])
@@ -28,7 +27,6 @@ library(randomForest) # Instalar con install.packages('randomForest')
 classifier = randomForest(x = training_set[, -3],
                           y = training_set[, 3],
                           ntree = 10)
-
 
 # Prediccion de los resultados con el conjunto de Testing
 y_pred = predict(classifier, newdata = testing_set[, -3]) # Todo el dataset excluyendo la columna 3

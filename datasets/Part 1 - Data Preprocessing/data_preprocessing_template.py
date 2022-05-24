@@ -17,12 +17,10 @@ dataset = pd.read_csv('data/Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 3].values
 
-
 # Dividir el dataset en conjunto de entrenamiento y conjunto de testing
 # 80% conjunto entrenamiento y 20% conjunto de testing
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
 
 # Escalado de variables
 # Para que no haya tanta diferencia en los rangos de

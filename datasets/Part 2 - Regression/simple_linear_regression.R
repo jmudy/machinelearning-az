@@ -15,11 +15,9 @@ split = sample.split(dataset$Salary, SplitRatio = 2/3)
 training_set = subset(dataset, split == TRUE)
 testing_set = subset(dataset, split == FALSE)
 
-
 # Escalado de valores
 #training_set[, 2:3] = scale(training_set[, 2:3])
 #testing_set[, 2:3] = scale(testing_set[, 2:3])
-
 
 # Ajustar el modelo de regresion lineal simple con el conjunto de entrenamiento
 regressor = lm(formula = Salary ~ YearsExperience,

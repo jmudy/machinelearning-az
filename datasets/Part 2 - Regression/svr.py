@@ -17,14 +17,12 @@ dataset = pd.read_csv('data/Position_Salaries.csv')
 X = dataset.iloc[:, 1:2].values # para que no sea un vector y sea una matriz ponemos 1:2
 y = dataset.iloc[:, 2].values
 
-
 # Dividir el dataset en conjunto de entrenamiento y conjunto de testing
 # 80% conjunto entrenamiento y 20% conjunto de testing
 """
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 """
-
 
 # Escalado de variables
 # Para que no haya tanta diferencia en los rangos de
@@ -35,16 +33,13 @@ sc_y = StandardScaler()
 X = sc_X.fit_transform(X)
 y = sc_y.fit_transform(y.reshape(-1, 1))
 
-
 # Ajustar la Regresion con todo el dataset
 from sklearn.svm import SVR
 regression = SVR(kernel = 'rbf')
 regression.fit(X, y)
 
-
 # Prediccion de nuestros modelos con SVR
 y_pred = sc_y.inverse_transform(regression.predict(sc_X.transform(np.array([[6.5]]))).reshape(1, -1))
-
 
 # Visualizacion de los resultados del SVR
 X_grid = np.arange(min(X), max(X), 0.1)

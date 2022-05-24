@@ -17,7 +17,6 @@ split = sample.split(dataset$Purchased, SplitRatio = 0.75)
 training_set = subset(dataset, split == TRUE)
 testing_set = subset(dataset, split == FALSE)
 
-
 # Escalado de valores
 # Hay que indicar las columnas donde hacer el escalado
 training_set[, 1:2] = scale(training_set[, 1:2])
@@ -27,7 +26,6 @@ testing_set[, 1:2] = scale(testing_set[, 1:2])
 library(e1071) # Instalar con install.packages('e1071')
 classifier = naiveBayes(x = training_set[, -3],
                         y = training_set$Purchased)
-
 
 # Prediccion de los resultados con el conjunto de Testing
 y_pred = predict(classifier, newdata = testing_set[, -3]) # Todo el dataset excluyendo la columna 3

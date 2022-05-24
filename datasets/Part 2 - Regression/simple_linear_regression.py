@@ -17,13 +17,11 @@ dataset = pd.read_csv('data/Salary_Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 1].values
 
-
 # Dividir el dataset en conjunto de entrenamiento y conjunto de testing
 # En este caso se ha cogido como conjunto de test 1/3 lo cual no es lo habitual
 # y recomendable pero para este caso tan simple funciona correctamente
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=1/3, random_state=0)
-
 
 # En caso de regresion lineal simple no hace falta hacer escalado de variables
 # porque la libreria de python que se utiliza ya lo implementa
@@ -37,7 +35,6 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 """
-
 
 # Crear modelo de Regresion Lineal Simple con el conjunto de entrenamiento
 from sklearn.linear_model import LinearRegression

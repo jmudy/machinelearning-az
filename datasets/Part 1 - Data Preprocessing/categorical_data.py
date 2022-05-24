@@ -17,7 +17,6 @@ dataset = pd.read_csv('data/Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 3].values
 
-
 # Codificar datos categóricos
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.compose import ColumnTransformer

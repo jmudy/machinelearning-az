@@ -14,7 +14,6 @@ split = sample.split(dataset$Purchased, SplitRatio = 0.75)
 training_set = subset(dataset, split == TRUE)
 testing_set = subset(dataset, split == FALSE)
 
-
 # Escalado de valores
 # Hay que indicar las columnas donde hacer el escalado
 training_set[, 1:2] = scale(training_set[, 1:2])
