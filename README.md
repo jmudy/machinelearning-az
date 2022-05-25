@@ -1,5 +1,9 @@
 # Repositorio del Curso [Machine Learning de A a la Z: R y Python para Data Science](https://cursos.frogamesformacion.com/courses/machine-learning-az/)
 
+`conda create -n ml-az python=3.8`
+`conda env create -f ml-az.yml`
+`pip install -r requirements.txt`
+
 Librerías utilizadas con `python 3.8.12`:
 
 * `numpy 1.21.5`
@@ -7,10 +11,10 @@ Librerías utilizadas con `python 3.8.12`:
 * `pandas 1.4.2`
 * `scikit-learn 1.0.2`
 * `scipy 1.7.3`
-* `statsmodels 0.9.0`
+* `statsmodels 0.13.2`
 * `nltk 3.7`
 * `tensorflow 2.9.1`
-* `keras 2.9.0 `
+* `keras 2.9.0`
 * `theano 1.0.5`
 
 Librerías utilizadas con `R 4.2.0`:
@@ -26,3 +30,4 @@ Librerías utilizadas con `R 4.2.0`:
 * `arulesViz 1.5-1`
 * `tm 0.7-8`
 * `SnowballC 0.7.0`
+* `h2o 3.36.0.4`

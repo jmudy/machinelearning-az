@@ -75,17 +75,32 @@ classifier = Sequential()
 # Para elegir los nodos de la capa oculta se suele coger la media de los nodos de la capa
 # de entrada y de la capa de salida, en este caso hay 11 nodos/caracteristicas de entrada,
 # y un nodo en la capa de salida, por tanto elegimos 6 nodos en la capa oculta
-classifier.add(Dense(units = 6, kernel_initializer = "uniform",
+classifier.add(Dense(units = 6, kernel_initializer = 'uniform',
                      activation = 'relu', input_dim = 11))
 
-# 
+# A partir de aqui no hace falta indicar el input_dim porque los siguientes nodos ya
+# se conectaran automaticamente con la capa anterior
+
+# Añadir la segunda capa oculta
+classifier.add(Dense(units = 6, kernel_initializer = 'uniform',
+                     activation = 'relu'))
+
+# Añadir la capa de salida
+classifier.add(Dense(units = 1, kernel_initializer = 'uniform', activation = 'sigmoid'))
+
+# Compilar la RNA
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+# Ajustar la RNA al Conjunto de Entrenamiento
+classifier.fit(X_train, y_train, batch_size = 10, epochs = 100)
 
 
 # Parte 3 - Evaluar el modelo y calcular predicciones finales
 
-# Prediccion de los resultados con el Conjunto de Testing
-y_pred = classifier.predict(X_test)
+# Predicción de los resultados con el Conjunto de Testing
+y_pred  = classifier.predict(X_test)
+y_pred = y_pred > 0.5
 
-# Elaborar una matriz de confusion
+# Elaborar una matriz de confusión
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
