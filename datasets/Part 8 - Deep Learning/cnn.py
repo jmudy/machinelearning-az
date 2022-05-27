@@ -13,94 +13,85 @@ Created on Fri May 27 00:01:38 2022
 #pip install tensorflow
 
 
-# Parte 1 - Preprocesado de datos
+# Parte 1 - Construir el modelo de CNN
 
-# Como importar las librerias
-import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
-
-# Importar el dataset
-dataset = pd.read_csv('data/Churn_Modelling.csv')
-X = dataset.iloc[:, 3:13].values
-y = dataset.iloc[:, 13].values
-
-# Codificar datos categóricos
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-
-labelencoder_X_1 = LabelEncoder()
-X[:, 1] = labelencoder_X_1.fit_transform(X[:, 1])
-
-labelencoder_X_2 = LabelEncoder()
-X[:, 2] = labelencoder_X_2.fit_transform(X[:, 2])
-
-# Como hay mas de dos datos categoricos en en la columna de los paises hay que
-# usar un one hot encoder y crear variables dummy
-ct = ColumnTransformer(
-    [('one_hot_encoder', OneHotEncoder(categories='auto'), [1])],   
-    remainder='passthrough'                        
-)
-
-X = np.array(ct.fit_transform(X), dtype=np.float)
-
-# Evitar la trampa de las variables dummy, hay que eliminar una columna
-X = X[:, 1:]
-
-# Dividir el dataset en conjunto de entrenamiento y conjunto de testing
-# 80% conjunto entrenamiento y 20% conjunto de testing
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
-# Escalado de variables
-# Para que no haya tanta diferencia en los rangos de
-# valores en los datos de las distintas columnas
-from sklearn.preprocessing import StandardScaler
-sc_X = StandardScaler()
-X_train = sc_X.fit_transform(X_train)
-X_test = sc_X.transform(X_test)
-
-
-# Parte 2 - Construir la RNA
-
-# Importar Keras y librerías adicionales
-import keras
+# Importar las librerias y paquetes
 from keras.models import Sequential
-from keras.layers import Dense
+from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
-# Inicializar la RNA
+# Inicializar la CNN
 classifier = Sequential()
 
-# Añadir las capas de entrada y primera oculta
-# Para elegir los nodos de la capa oculta se suele coger la media de los nodos de la capa
-# de entrada y de la capa de salida, en este caso hay 11 nodos/caracteristicas de entrada,
-# y un nodo en la capa de salida, por tanto elegimos 6 nodos en la capa oculta
-classifier.add(Dense(units = 6, kernel_initializer = 'uniform',
-                     activation = 'relu', input_dim = 11))
+# Paso 1 - Primera capa de convolucion y Max Pooling
+classifier.add(Conv2D(filters = 32,
+                      kernel_size = (3, 3),
+                      input_shape = (64, 64, 3),
+                      activation = 'relu'))
 
-# A partir de aqui no hace falta indicar el input_dim porque los siguientes nodos ya
-# se conectaran automaticamente con la capa anterior
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
 
-# Añadir la segunda capa oculta
-classifier.add(Dense(units = 6, kernel_initializer = 'uniform',
+# Paso 2 - Segunda capa de convolucion y Max Pooling
+classifier.add(Conv2D(filters = 32,
+                      kernel_size = (3, 3),
+                      activation = 'relu'))
+
+classifier.add(MaxPooling2D(pool_size = (2, 2)))
+
+# Paso 3 - Flattening
+classifier.add(Flatten())
+
+# Paso 4 - Fully-Connected
+# Primera capa oculta
+classifier.add(Dense(units = 128,
                      activation = 'relu'))
-
 # Añadir la capa de salida
-classifier.add(Dense(units = 1, kernel_initializer = 'uniform', activation = 'sigmoid'))
+classifier.add(Dense(units = 1,
+                     activation = 'sigmoid'))
 
-# Compilar la RNA
-classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+# Compilar la CNN
+classifier.compile(optimizer = 'adam',
+                   loss = 'binary_crossentropy',
+                   metrics = ['accuracy'])
 
-# Ajustar la RNA al Conjunto de Entrenamiento
-classifier.fit(X_train, y_train, batch_size = 10, epochs = 100)
 
+# Parte 2 - Ajustar la CNN a las imagenes para entrar
+from keras.preprocessing.image import ImageDataGenerator
 
-# Parte 3 - Evaluar el modelo y calcular predicciones finales
+train_datagen = ImageDataGenerator(
+        rescale = 1./255,
+        shear_range = 0.2,
+        zoom_range = 0.2,
+        horizontal_flip = True)
 
-# Predicción de los resultados con el Conjunto de Testing
-y_pred  = classifier.predict(X_test)
-y_pred = y_pred > 0.5
+test_datagen = ImageDataGenerator(rescale = 1./255)
 
-# Elaborar una matriz de confusión
-from sklearn.metrics import confusion_matrix
-cm = confusion_matrix(y_test, y_pred)
+training_dataset = train_datagen.flow_from_directory('data/training_set',
+                                                     target_size = (64, 64),
+                                                     batch_size = 32,
+                                                     class_mode = 'binary')
+
+testing_dataset = test_datagen.flow_from_directory('data/test_set',
+                                                    target_size = (64, 64),
+                                                    batch_size = 32,
+                                                    class_mode = 'binary')
+
+"""
+classifier.fit_generator(training_dataset,
+                         steps_per_epoch = 8000,
+                         epochs = 25,
+                         validation_data = testing_dataset,
+                         validation_steps = 2000)
+
+Salta error en la iteracion 250
+
+Siguiendo las recomendaciones de los usuarios de stackoverflow
+
+steps_per_epoch = len(X_train)//batch_size
+validation_steps = len(X_test)//batch_size
+"""
+
+classifier.fit_generator(training_dataset,
+                         steps_per_epoch = 250,
+                         epochs = 25,
+                         validation_data = testing_dataset,
+                         validation_steps = 62)
