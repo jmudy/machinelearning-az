@@ -90,8 +90,8 @@ steps_per_epoch = len(X_train)//batch_size
 validation_steps = len(X_test)//batch_size
 """
 
-classifier.fit_generator(training_dataset,
-                         steps_per_epoch = 250,
-                         epochs = 25,
-                         validation_data = testing_dataset,
-                         validation_steps = 62)
+classifier.fit(training_dataset,
+               steps_per_epoch = int(8000/32),
+               epochs = 25,
+               validation_data = testing_dataset,
+               validation_steps = int(2000/32))

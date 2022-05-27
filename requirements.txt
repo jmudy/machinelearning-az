@@ -7,4 +7,4 @@ statsmodels==0.13.2
 nltk==3.7
 tensorflow==2.9.1
 keras==2.9.0 
-theano==1.0.5
+Theano==1.0.5
