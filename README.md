@@ -5,11 +5,11 @@ conda create -n ml-az python=3.8
 ```
 
 ```bash
-conda env create -f ml-az.yml
+pip install -r requirements.txt
 ```
 
 ```bash
-pip install -r requirements.txt
+conda env create -f ml-az.yml
 ```
 
 Librerías utilizadas con `python 3.8.12`:
@@ -40,3 +40,4 @@ Librerías utilizadas con `R 4.2.0`:
 * `SnowballC 0.7.0`
 * `h2o 3.36.0.4`
 * `caret 6.0-92`
+* `kernlab 0.9-30`
