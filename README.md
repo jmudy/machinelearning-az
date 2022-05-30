@@ -24,6 +24,7 @@ Librerías utilizadas con `python 3.8.12`:
 * `tensorflow 2.9.1`
 * `keras 2.9.0`
 * `Theano 1.0.5`
+* `xgboost 1.6.1`
 
 Librerías utilizadas con `R 4.2.0`:
 
@@ -41,3 +42,4 @@ Librerías utilizadas con `R 4.2.0`:
 * `h2o 3.36.0.4`
 * `caret 6.0-92`
 * `kernlab 0.9-30`
+* `xgboost 1.6.0.1`
