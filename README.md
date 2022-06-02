@@ -3,7 +3,7 @@
 Instalación entorno virtual con Anaconda:
 
 ```bash
-conda create -n ml-az python=3.8
+conda create -n machinelearning-az python=3.8
 ```
 
 ```bash
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 o bien:
 
 ```bash
-conda env create -f ml-az.yml
+conda env create -f machinelearning-az.yml
 ```
 
 Las librerías de `R 4.2.0` que han sido utilizadas en este curso son:
