@@ -56,7 +56,7 @@ prob_set = predict(classifier, type = 'response', newdata = grid_set)
 y_grid = ifelse(prob_set > 0.5, 1, 0)
 plot(set[, -3],
      main = 'Clasificación (Conjunto de Entrenamiento)',
-     xlab = 'Edad', ylab = 'Sueldo Estimado',
+     xlab = 'CP1', ylab = 'CP2',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
 points(grid_set, pch = '.', col = ifelse(y_grid == 1, 'springgreen3', 'tomato'))
@@ -72,7 +72,7 @@ prob_set = predict(classifier, type = 'response', newdata = grid_set)
 y_grid = ifelse(prob_set > 0.5, 1, 0)
 plot(set[, -3],
      main = 'Clasificación (Conjunto de Testing)',
-     xlab = 'Edad', ylab = 'Sueldo Estimado',
+     xlab = 'CP1', ylab = 'CP2',
      xlim = range(X1), ylim = range(X2))
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add = TRUE)
 points(grid_set, pch = '.', col = ifelse(y_grid == 1, 'springgreen3', 'tomato'))
